@@ -6,7 +6,7 @@
 }
 .bests p {
 	margin: 15px 0 0 30px;
-} 
+}
 .bests  ul {
 	margin: 0 0 0 30px;
 }
@@ -23,7 +23,7 @@ span.post-title {
 	font: 21px/45px 'PT Sans Caption','Helvetica Medium', 'Arial', serif;
 	padding: 0 0 0 30px;
 	text-shadow: 0 2px 4px rgba(0,0,0, .46);
-	margin: 10px 0 10px -30px !important;
+	/*margin: 10px 0 10px -30px !important;*/
 }
 span.post-title a {color: #fff !important;}
 
@@ -58,7 +58,7 @@ h1.category {
 }
 
 .table-bests img {
-    width: auto !important;
+	width: auto !important;
 }
 
 .table-bests, .table-bests td {
@@ -144,7 +144,7 @@ h2:after {
 	margin: -15px 0px -1px -11px;
 	list-style: none;
 }
- .for-childrens ul li{
+.for-childrens ul li{
 	list-style: none;
 }
 .children-ul a, .for-childrens a {

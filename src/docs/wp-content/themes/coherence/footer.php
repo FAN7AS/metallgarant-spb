@@ -324,9 +324,7 @@ jQuery( ".calendarpicker" ).datepicker({
 		max-height: 550px;
     	overflow: hidden;
 	}
-	#main .container {
-		overflow-x: scroll !important;
-	}
+
 </style>
 
 <!--<div id="may9"></div>-->
