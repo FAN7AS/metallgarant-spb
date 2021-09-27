@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Калькулятор</title>
+
+<link rel="shortcut icon" href="http://23met.ru/favicon.ico" type="image/x-icon">
+
+<style type="text/css">
+/* main*/
+body{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size:72%;  width:372px; }
+a, a:visited{ color:#0063DC;}
+body,a,div,ul,li,span,h1{margin:0; padding:0;}
+
+/* calc*/
+#calc_w,#calc_l{background:#FFFFFF; border:1px solid #aaa; width:170px; vertical-align:middle; padding:3px; height:14px; margin-top:5px; }
+.calc_s{background:#FFFFFF; border:1px solid #aaa;  width:101px; vertical-align:middle;padding:1px; height:22px;  line-height:16px;/*lineheight-safari hack*/margin-top:9px; }
+#calc_l{float: right;}
+
+.calc_grey{color:#aaa;}
+#calc_container{ height:87px; border:1px solid #aaa;  background-color:#fff;}
+
+#glass{position:absolute; left:0; top:0; z-index:10; width:372px; height:300px; background-color:#fff; opacity:0.7; filter: alpha(opacity=70); display:none;}
+#loading{position:absolute; left:1px; top:68px;  z-index:100; background-color:#E5817B; font-weight:bold; color:#fff; padding:3px 5px;  display:none;}
+/* end calc*/
+</style>
+
+
+</head>
+<body>
+
+<div id="glass"></div>
+<div id="loading">Загрузка...</div>
+
+<div id="calc_container">
+	
+	<div style="font-size:100%; font-weight:bold; padding:4px; margin:0 5px;  border-bottom:1px solid #aaa; text-align:center;">	
+    	Калькулятор металлопроката
+    </div>
+<div style="padding:0 5px;">
+	<select id="23met_n" class="calc_s" style="width:150px;" onchange="refresh(1)"><option value="balka">Балка</option><option value="kvadrat">Квадрат</option><option value="kryg">Круг</option><option value="list_gk">Лист г/к</option><option value="polosa">Полоса</option><option value="tryba_vgp">Труба ВГП</option><option value="tryba_gd">Труба г/д</option><option value="tryba_es_pr" selected="selected">Труба э/с прямоуг.</option><option value="ygolok">Уголок</option><option value="shveller">Швеллер</option><option value="shestigrannik">Шестигранник</option></select>
+    
+    <select id="23met_s" class="calc_s" onchange="refresh(0)"><option value="0.50054112" selected="selected">20х10х1.2</option><option value="0.6054705">20х10х1.5</option><option value="0.7232205">25х10х1.5</option><option value="0.8409705">25х15х1.5</option><option value="0.93386112">28х25х1.2</option><option value="1.1471205">28х25х1.5</option><option value="1.484592">28х25х2</option><option value="1.7996125">28х25х2.5</option><option value="0.78314112">30х15х1.2</option><option value="0.9587205">30х15х1.5</option><option value="1.233392">30х15х2</option><option value="0.87734112">30х20х1.2</option><option value="1.0764705">30х20х1.5</option><option value="1.390392">30х20х2</option><option value="0.97154112">35х20х1.2</option><option value="0.63739802">40х20х0.7</option><option value="1.06574112">40х20х1.2</option><option value="1.189866105">40х20х1.35</option><option value="1.23079208">40х20х1.4</option><option value="1.3119705">40х20х1.5</option><option value="1.510987625">40х20х1.75</option><option value="1.704392">40х20х2</option><option value="2.0743625">40х20х2.5</option><option value="2.421882">40х20х3</option><option value="1.15994112">40х25х1.2</option><option value="1.295841105">40х25х1.35</option><option value="1.4297205">40х25х1.5</option><option value="1.648362625">40х25х1.75</option><option value="1.861392">40х25х2</option><option value="2.2706125">40х25х2.5</option><option value="2.657382">40х25х3</option><option value="1.5003705">40х28х1.5</option><option value="2.3883625">40х28х2.5</option><option value="2.018392">40х30х2</option><option value="1.15994112">45х20х1.2</option><option value="1.4297205">45х20х1.5</option><option value="2.018392">50х20х2</option><option value="1.34834112">50х25х1.2</option><option value="1.507791105">50х25х1.35</option><option value="1.6652205">50х25х1.5</option><option value="1.923112625">50х25х1.75</option><option value="2.175392">50х25х2</option><option value="2.6631125">50х25х2.5</option><option value="2.94496832">50х25х2.8</option><option value="3.128382">50х25х3</option><option value="2.332392">50х30х2</option><option value="2.8593625">50х30х2.5</option><option value="3.363882">50х30х3</option><option value="4.305568">50х30х4</option><option value="2.646392">50х40х2</option><option value="3.2518625">50х40х2.5</option><option value="3.834882">50х40х3</option><option value="4.3954505">50х40х3.5</option><option value="2.0184705">60х30х1.5</option><option value="2.335237625">60х30х1.75</option><option value="2.646392">60х30х2</option><option value="3.2518625">60х30х2.5</option><option value="3.60436832">60х30х2.8</option><option value="3.834882">60х30х3</option><option value="4.3954505">60х30х3.5</option><option value="4.933568">60х30х4</option><option value="2.2539705">60х40х1.5</option><option value="2.609987625">60х40х1.75</option><option value="2.960392">60х40х2</option><option value="3.6443625">60х40х2.5</option><option value="4.04396832">60х40х2.8</option><option value="4.305882">60х40х3</option><option value="4.56420352">60х40х3.2</option><option value="4.9449505">60х40х3.5</option><option value="5.561568">60х40х4</option><option value="6.72745">60х40х5</option><option value="4.0368625">80х30х2.5</option><option value="3.159487625">80х40х1.75</option><option value="3.588392">80х40х2</option><option value="4.4293625">80х40х2.5</option><option value="5.247882">80х40х3</option><option value="6.0439505">80х40х3.5</option><option value="6.817568">80х40х4</option><option value="8.29745">80х40х5</option><option value="4.216392">80х60х2</option><option value="6.189882">80х60х3</option><option value="6.57380352">80х60х3.2</option><option value="7.1429505">80х60х3.5</option><option value="8.073568">80х60х4</option><option value="9.86745">80х60х5</option><option value="11.571528">80х60х6</option><option value="4.216392">100х40х2</option><option value="6.189882">100х40х3</option><option value="8.073568">100х40х4</option><option value="4.530392">100х50х2</option><option value="5.6068625">100х50х2.5</option><option value="6.660882">100х50х3</option><option value="8.701568">100х50х4</option><option value="10.65245">100х50х5</option><option value="12.513528">100х50х6</option><option value="4.844392">100х60х2</option><option value="7.131882">100х60х3</option><option value="9.329568">100х60х4</option><option value="11.43745">100х60х5</option><option value="13.455528">100х60х6</option><option value="8.073882">100х80х3</option><option value="9.3409505">100х80х3.5</option><option value="10.585568">100х80х4</option><option value="13.00745">100х80х5</option><option value="8.073882">120х60х3</option><option value="10.585568">120х60х4</option><option value="13.00745">120х60х5</option><option value="15.339528">120х60х6</option><option value="9.015882">120х80х3</option><option value="10.4399505">120х80х3.5</option><option value="11.841568">120х80х4</option><option value="14.57745">120х80х5</option><option value="17.223528">120х80х6</option><option value="19.779802">120х80х7</option><option value="22.246272">120х80х8</option><option value="11.841568">140х60х4</option><option value="14.57745">140х60х5</option><option value="17.223528">140х60х6</option><option value="19.107528">140х80х6</option><option value="14.353568">140х100х4</option><option value="17.71745">140х100х5</option><option value="20.991528">140х100х6</option><option value="24.175802">140х100х7</option><option value="15.609568">140х120х4</option><option value="19.28745">140х120х5</option><option value="22.875528">140х120х6</option><option value="26.373802">140х120х7</option><option value="29.782272">140х120х8</option><option value="18.50245">150х100х5</option><option value="21.933528">150х100х6</option><option value="28.526272">150х100х8</option><option value="14.353568">160х80х4</option><option value="17.71745">160х80х5</option><option value="20.991528">160х80х6</option><option value="24.175802">160х80х7</option><option value="27.270272">160х80х8</option><option value="16.865568">160х120х4</option><option value="20.85745">160х120х5</option><option value="24.759528">160х120х6</option><option value="28.571802">160х120х7</option><option value="32.294272">160х120х8</option><option value="29.670802">160х130х7</option><option value="18.121568">160х140х4</option><option value="22.42745">160х140х5</option><option value="26.643528">160х140х6</option><option value="34.806272">160х140х8</option><option value="16.865568">180х100х4</option><option value="20.85745">180х100х5</option><option value="24.759528">180х100х6</option><option value="28.571802">180х100х7</option><option value="32.294272">180х100х8</option><option value="18.435568">180х125х4</option><option value="22.81995">180х125х5</option><option value="19.377568">180х140х4</option><option value="23.99745">180х140х5</option><option value="28.527528">180х140х6</option><option value="32.967802">180х140х7</option><option value="37.318272">180х140х8</option><option value="18.121568">200х100х4</option><option value="22.42745">200х100х5</option><option value="26.643528">200х100х6</option><option value="34.806272">200х100х8</option><option value="19.377568">200х120х4</option><option value="23.99745">200х120х5</option><option value="28.527528">200х120х6</option><option value="32.967802">200х120х7</option><option value="37.318272">200х120х8</option><option value="27.13745">200х160х5</option><option value="32.295528">200х160х6</option><option value="37.363802">200х160х7</option><option value="42.342272">200х160х8</option><option value="47.230938">200х160х9</option><option value="52.0298">200х160х10</option><option value="61.358112">200х160х12</option><option value="23.99745">220х100х5</option><option value="38.574272">230х100х8</option><option value="27.13745">240х120х5</option><option value="32.295528">240х120х6</option><option value="42.342272">240х120х8</option><option value="36.063528">240х160х6</option><option value="41.759802">240х160х7</option><option value="47.366272">240х160х8</option><option value="58.3098">240х160х10</option><option value="68.894112">240х160х12</option><option value="36.063528">250х150х6</option><option value="47.366272">250х150х8</option><option value="58.3098">250х150х10</option><option value="68.894112">250х150х12</option><option value="36.063528">300х100х6</option><option value="47.366272">300х100х8</option><option value="58.3098">300х100х10</option><option value="45.483528">300х200х6</option><option value="59.926272">300х200х8</option><option value="74.0098">300х200х10</option><option value="87.734112">300х200х12</option><option value="54.903528">350х250х6</option><option value="72.486272">350х250х8</option><option value="89.7098">350х250х10</option><option value="106.574112">350х250х12</option></select>
+    
+        
+        
+        
+        
+    <!--<br />-->
+    		<input id="calc_w" class="calc_grey" onkeyup="calc(1)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="тонны">
+    <input id="calc_l" class="calc_grey" onkeyup="calc(0)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="метры">
+    </div>    
+    <div style="margin-top:9px; height:19px; line-height:19px; padding:0 5px;  background-color:#f7f7f7; border-top:1px solid #E0E0E0;">
+    <img src="trub-prof.jpg" />
+    </div>
+</div>	
+
+   
+ 
+<script type="text/javascript">
+
+
+  var calc_koef=0.50054112;
+  var calc_stal_koef=1;
+  var calc_text={
+		  calc_w:'тонны',
+		  calc_l:'метры'
+	  };
+  
+  var el_calc_w=$('calc_w');
+  var el_calc_l=$('calc_l');
+  var calc_last_w_to_l;
+  
+  function calc_set_stal_koef(e){
+	   calc_stal_koef=e.value;
+	   if(calc_last_w_to_l) calc(1);
+	   if(calc_last_w_to_l===0) calc(0);
+	   e.blur();
+  }
+  
+  
+  function calc_grey(id,prinydit){
+	   var e=$(id)
+	   if(e.value==calc_text[id] && !prinydit){ e.value='';  e.className=e.className.replace('calc_grey','');}
+	   else{
+		  if(!e.value || prinydit){ e.value=calc_text[id];  e.className=e.className+' calc_grey';}
+	   }
+  }
+
+  function calc(w_to_l){
+	  var w,l;
+	  if(w_to_l==1){
+		  w=$('calc_w').value;
+		  l=w.replace(',', '.')/(calc_koef*calc_stal_koef)*1000;
+		  if(l){l=Math.round(l*1000)/1000; el_calc_l.value=l; el_calc_l.className=el_calc_l.className.replace('calc_grey',''); }
+		  else calc_grey('calc_l',1);
+		  calc_last_w_to_l=1;
+	  }
+	  else{
+		  l=$('calc_l').value;
+		  w=l.replace(',', '.')*(calc_koef*calc_stal_koef)/1000;
+		  if(w){w=Math.round(w*1000)/1000; el_calc_w.value=w;  el_calc_w.className=el_calc_w.className.replace('calc_grey','');}
+		  else calc_grey('calc_w',1);
+		  calc_last_w_to_l=0;
+	  }
+  }
+  
+  function $(id){
+	  return document.getElementById(id);
+  }
+  
+  function refresh(all,set_size){
+	 if(all){
+		 $('glass').style.display='block';
+		 //var t=setTimeout("$('loading').style.display='block'",500);
+		 if(!set_size) window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm';
+		 else window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm'+set_size+'/';
+	 }
+	 else{ 
+
+	 	calc_koef=$('23met_s').value;
+		if(calc_koef){
+			if(calc_last_w_to_l) calc(1);
+	    	if(calc_last_w_to_l===0) calc(0);
+		}
+		document.getElementById('23met_s').blur();
+	 }
+  }
+
+</script>
+<!--/calc--> 
+
+</body></html>

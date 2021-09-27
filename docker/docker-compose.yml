@@ -1,0 +1,78 @@
+version: '3'
+### VOLUMES ########################
+volumes:
+  mysql_data:
+### NETWORKS ########################
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PREFIX_SUBNET:-172.79.0.}${SUBNET:-0/24}
+services:
+  apache:
+    container_name: ${COMPOSE_PROJECT_NAME:-metallgarant-spb}_${APACHE_CONTAINER_NAME:-apache}
+    build:
+      context: ./services/apache/
+      args:
+        - PHP_VERSION=${PHP_VERSION:-5.6.4-apache}
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ../src/:/var/www/html/:delegated
+      - ./services/apache/templates/:/templates/
+      - ./certs/:/certs/
+    networks:
+      default:
+        ipv4_address: ${PREFIX_SUBNET:-172.79.0.}${APACHE_HOST:-21}
+    environment:
+      - DOMAIN=${DOMAIN}
+      - HTTPS=${HTTPS:-0}
+      - APACHE_LOG_DIR=${APACHE_LOG_DIR:-/var/log/apache2}
+      - FAKEHTTPS=${FAKEHTTPS:-0}
+      - SELFSIGNSSL=${SELFSIGNSSL:-0}
+      - XDEBUG_ENABLE=${XDEBUG_ENABLE:-0}
+      - XDEBUG_REMOTE_ENABLE=${XDEBUG_REMOTE_ENABLE:-0}
+      - XDEBUG_REMOTE_PORT=${XDEBUG_REMOTE_PORT:-9000}
+      - XDEBUG_IDE_KEY=${XDEBUG_IDE_KEY:-PHPSTORM_SOSNA}
+      - XDEBUG_PROFILER_ENABLE_TRIGGER=${XDEBUG_PRsOFILER_ENABLE_TRIGGER:-0}
+      - MYSQL_USER=${MYSQL_USER:-root}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-database}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-defender}
+      - ENV=${ENV:-loc}
+  ### MYSQL ##########################
+  mysql:
+    command: ["mysqld","--character-set-server=${MYSQL_CHARSET:-utf8}","--collation-server=${MYSQL_COLLATION:-utf8_general_ci}", "--sql_mode=", "--max_allowed_packet=32505856"]
+    container_name: ${COMPOSE_PROJECT_NAME:-metallgarant-spb}_${MYSQL_CONTAINER_NAME:-mysql}
+    build:
+      context: ./services/mysql/
+      args:
+        - MYSQL_TAG_VERSION=${MYSQL_TAG_VERSION:-5.7.29}
+    volumes:
+      - mysql_data:/var/lib/mysql/
+      - ${MYSQL_DUMP_PATH:-./services/mysql/dumps/}:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_USER=${MYSQL_USER:-root}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-database}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-defender}
+      - TZ=${TZ:-Europe/Moscow}
+      - ENV=${ENV:-loc}
+    expose:
+      - ${MYSQL_PORT:-3306}
+    networks:
+      default:
+        ipv4_address: ${PREFIX_SUBNET:-172.79.0.}${MYSQL_HOST:-22}
+    restart: always
+
+  ### OMGWTFSSL ##########
+  omgwtfssl:
+    image: paulczar/omgwtfssl
+    restart: "no"
+    volumes:
+      - ./certs:/certs
+    environment:
+      - SSL_SUBJECT=${DOMAIN}
+      - CA_SUBJECT=admin@${DOMAIN}
+      - SSL_KEY=/certs/${DOMAIN}.key
+      - SSL_CERT=/certs/${DOMAIN}.crt
+      - ENV=${ENV:-loc}

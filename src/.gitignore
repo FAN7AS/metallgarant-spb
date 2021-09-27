@@ -1,0 +1,15 @@
+docs/wp-content/uploads
+img/
+.htaccess
+../.idea/
+docs/wp-config.php
+docs/wp-settings.php
+docs/wp-content/themes/coherence/images/*.jpg
+docs/wp-content/themes/coherence/images/*.png
+docs/wp-content/plugins/woocommerce/
+docs/wp-content/plugins/wp-all-export/
+docs/wp-content/plugins/all-in-one-wp-migration/
+docs/wp-content/cache/
+docs/img/
+docs/wp-content/**/*.jpg
+docs/wp-content/**/*.png

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Калькулятор</title>
+
+
+
+<style type="text/css">
+/* main*/
+body{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size:72%;  width:372px; }
+a, a:visited{ color:#0063DC;}
+body,a,div,ul,li,span,h1{margin:0; padding:0;}
+
+/* calc*/
+#calc_w,#calc_l{background:#FFFFFF; border:1px solid #aaa; width:170px; vertical-align:middle; padding:3px; height:14px; margin-top:5px; }
+.calc_s{background:#FFFFFF; border:1px solid #aaa;  width:101px; vertical-align:middle;padding:1px; height:22px;  line-height:16px;/*lineheight-safari hack*/margin-top:9px; }
+#calc_l{float: right;}
+
+.calc_grey{color:#aaa;}
+#calc_container{ height:87px; border:1px solid #aaa;  background-color:#fff;}
+
+#glass{position:absolute; left:0; top:0; z-index:10; width:372px; height:300px; background-color:#fff; opacity:0.7; filter: alpha(opacity=70); display:none;}
+#loading{position:absolute; left:1px; top:68px;  z-index:100; background-color:#E5817B; font-weight:bold; color:#fff; padding:3px 5px;  display:none;}
+/* end calc*/
+</style>
+
+
+</head>
+<body>
+
+<div id="glass"></div>
+<div id="loading">Загрузка...</div>
+
+<div id="calc_container">
+	
+	<div style="font-size:100%; font-weight:bold; padding:4px; margin:0 5px;  border-bottom:1px solid #aaa; text-align:center;">	
+    	Калькулятор металлопроката
+    </div>
+<div style="padding:0 5px;">
+	<select id="23met_n" class="calc_s" style="width:150px;" onchange="refresh(1)"><option value="balka" selected="selected">Балка</option><option value="kvadrat">Квадрат</option><option value="kryg">Круг</option><option value="list_gk">Лист г/к</option><option value="polosa">Полоса</option><option value="tryba_vgp">Труба ВГП</option><option value="tryba_gd">Труба г/д</option><option value="tryba_es_pr">Труба э/с прямоуг.</option><option value="ygolok">Уголок</option><option value="shveller">Швеллер</option><option value="shestigrannik">Шестигранник</option></select>
+    
+    <select id="23met_s" class="calc_s" onchange="refresh(0)"><option value="9.46" selected="selected">10</option><option value="11.5">12</option><option value="8.7">12Б1</option><option value="13.7">14</option><option value="10.5">14Б1</option><option value="15.9">16</option><option value="12.7">16Б1</option><option value="18.4">18</option><option value="21">20</option><option value="">20Б</option><option value="21.3">20Б1</option><option value="">20Б2</option><option value="41.4">20К1</option><option value="49.9">20К2</option><option value="30.6">20Ш1</option><option value="27.3">24</option><option value="38.3">24М</option><option value="">25</option><option value="25.7">25Б1</option><option value="29.6">25Б2</option><option value="62.6">25К1</option><option value="72.4">25К2</option><option value="80.2">25К3</option><option value="44.4">25Ш1</option><option value="73.2">26К2</option><option value="36.5">30</option><option value="32">30Б1</option><option value="36.7">30Б2</option><option value="87">30К1</option><option value="94">30К2</option><option value="105.8">30К3</option><option value="105.8">30К4</option><option value="50.2">30М</option><option value="">30Ш</option><option value="56.8">30Ш1</option><option value="68.6">30Ш2</option><option value="68.3">30Ш3</option><option value="41.4">35Б1</option><option value="49.6">35Б2</option><option value="109.1">35К1</option><option value="136.5">35К2</option><option value="144.5">35К3</option><option value="65.3">35Ш1</option><option value="79.7">35Ш2</option><option value="91.3">35Ш3</option><option value="48.6">36</option><option value="57.9">36М</option><option value="57">40</option><option value="56.6">40Б1</option><option value="66">40Б2</option><option value="146.6">40К1</option><option value="171.7">40К2</option><option value="200.1">40К3</option><option value="231.9">40К4</option><option value="290.8">40К5</option><option value="88.6">40Ш1</option><option value="106.7">40Ш2</option><option value="123.4">40Ш3</option><option value="66.5">45</option><option value="66.2">45Б1</option><option value="76">45Б2</option><option value="77.6">45М</option><option value="123.5">45Ш1</option><option value="">45Ш2</option><option value="78.5">50</option><option value="72.5">50Б1</option><option value="79.5">50Б2</option><option value="89.7">50Б3</option><option value="114.2">50Ш1</option><option value="138.4">50Ш2</option><option value="173.8">50Ш3</option><option value="">50Ш4</option><option value="89">55Б1</option><option value="97.9">55Б2</option><option value="108">60</option><option value="94.6">60Б1</option><option value="105.5">60Б2</option><option value="137">60Ш1</option><option value="170.7">60Ш2</option><option value="198.1">60Ш3</option><option value="225.6">60Ш4</option><option value="120.1">70Б0</option><option value="129.3">70Б1</option><option value="144.2">70Б2</option><option value="166">70Ш1</option><option value="190.4">70Ш2</option><option value="226.9">70Ш3</option><option value="258.6">70Ш4</option><option value="294.9">70Ш5</option><option value="159.5">80Б1</option><option value="177.9">80Б2</option><option value="164.6">80Ш1</option><option value="191.1">80Ш2</option><option value="194">90Б1</option><option value="213.8">90Б2</option><option value="191.5">90Ш1</option><option value="212.6">90Ш2</option><option value="230.6">100Б1</option><option value="258.2">100Б2</option><option value="285.7">100Б3</option><option value="314.5">100Б4</option><option value="230.6">100Ш1</option><option value="258.2">100Ш2</option><option value="285.7">100Ш3</option><option value="314.5">100Ш4</option></select>
+    
+        
+        
+        
+        
+    <!--<br />-->
+    		<input id="calc_w" class="calc_grey" onkeyup="calc(1)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="тонны">
+    <input id="calc_l" class="calc_grey" onkeyup="calc(0)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="метры">
+    </div>    
+</div>	
+
+   
+ 
+<script type="text/javascript">
+
+
+  var calc_koef=9.46;
+  var calc_stal_koef=1;
+  var calc_text={
+		  calc_w:'тонны',
+		  calc_l:'метры'
+	  };
+  
+  var el_calc_w=$('calc_w');
+  var el_calc_l=$('calc_l');
+  var calc_last_w_to_l;
+  
+  function calc_set_stal_koef(e){
+	   calc_stal_koef=e.value;
+	   if(calc_last_w_to_l) calc(1);
+	   if(calc_last_w_to_l===0) calc(0);
+	   e.blur();
+  }
+  
+  
+  function calc_grey(id,prinydit){
+	   var e=$(id)
+	   if(e.value==calc_text[id] && !prinydit){ e.value='';  e.className=e.className.replace('calc_grey','');}
+	   else{
+		  if(!e.value || prinydit){ e.value=calc_text[id];  e.className=e.className+' calc_grey';}
+	   }
+  }
+
+  function calc(w_to_l){
+	  var w,l;
+	  if(w_to_l==1){
+		  w=$('calc_w').value;
+		  l=w.replace(',', '.')/(calc_koef*calc_stal_koef)*1000;
+		  if(l){l=Math.round(l*1000)/1000; el_calc_l.value=l; el_calc_l.className=el_calc_l.className.replace('calc_grey',''); }
+		  else calc_grey('calc_l',1);
+		  calc_last_w_to_l=1;
+	  }
+	  else{
+		  l=$('calc_l').value;
+		  w=l.replace(',', '.')*(calc_koef*calc_stal_koef)/1000;
+		  if(w){w=Math.round(w*1000)/1000; el_calc_w.value=w;  el_calc_w.className=el_calc_w.className.replace('calc_grey','');}
+		  else calc_grey('calc_w',1);
+		  calc_last_w_to_l=0;
+	  }
+  }
+  
+  function $(id){
+	  return document.getElementById(id);
+  }
+  
+  function refresh(all,set_size){
+	 if(all){
+		 $('glass').style.display='block';
+		 //var t=setTimeout("$('loading').style.display='block'",500);
+		 if(!set_size) window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm';
+		 else window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm'+set_size+'/';
+	 }
+	 else{ 
+
+	 	calc_koef=$('23met_s').value;
+		if(calc_koef){
+			if(calc_last_w_to_l) calc(1);
+	    	if(calc_last_w_to_l===0) calc(0);
+		}
+		document.getElementById('23met_s').blur();
+	 }
+  }
+
+</script>
+<!--/calc--> 
+
+</body></html>

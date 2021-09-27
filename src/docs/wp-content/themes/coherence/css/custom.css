@@ -1,0 +1,231 @@
+/* Have fun adding your style here :) - PS: At all times this file should contain a comment or a rule, otherwise opera might act buggy :( */
+.rh-inner{top: 150px !important;}
+#may9 {
+background: url(../images/9may.png) no-repeat;
+width: 116px;
+height: 211px;
+position: fixed;
+top: 5px;
+left: 5px;
+z-index: 999;
+}
+.logged-in div.wpcf7 {
+	margin-top: 5px !important;
+}
+.textareaform {
+	width: 95% !important;
+}
+.header-phone-big {
+    /*margin: 6px 0 0;*/
+    font-size: 12px;
+    /*color: #fff;*/
+    text-align: right;
+    color: #f1b70d;
+	line-height: 19px;
+}
+.email {
+text-align:right;
+}
+.zv {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+.four_fifth > form {
+    width: 100%;
+}
+#header .container  .header-phone-big a {    color: #f1b70d; margin-bottom: 8px; display: inline-block; }
+.header-text-small {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 17px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+#logotype img {width: 278px;}
+.logo img{margin:-10px 0 0 -30px}
+.infotext {font-size:25px; padding:5px 0;text-shadow: 1px 1px 2px #333;
+ }
+.infotext small{font-size:14px;color:#ccc;line-height:10px}
+.infotext2 {font-size:25px; padding:5px 0;text-shadow: 1px 1px 2px #333;
+ }
+.infotext2 small{font-size:14px;color:#ccc;line-height:10px}
+
+h1, h2, h3, h4, h5, h6,  .sidebar .current_page_item a, #top .pagination .current, .comment-count, .callout .content-area {
+font-family: 'Roboto', sans-serif;
+}
+
+
+@media screen and (max-width: 760px) {
+.infotext2 small, .infotext small {display:none}
+
+.main_menu{position:absolute;top:100px !important; left:10px !important}
+}
+
+@media screen and (max-width: 480px) {
+#top .main_menu select {min-width:170px}
+}
+
+
+.order-call {
+    background: #ff3639; /* Old browsers */
+    background: -moz-linear-gradient(top, #ff3639 0%, #790f0e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ff3639 0%,#790f0e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ff3639 0%,#790f0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3639', endColorstr='#790f0e',GradientType=0 ); /* IE6-9 */
+    color: white !important;
+    font: bold 13px "Roboto",sans-serif;
+    left: 20px;
+    padding: 5px 20px;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+	display: block;
+	text-align: center;
+    margin-bottom: 5px;
+}
+.order-call:hover {
+    text-decoration: underline;
+	margin-bottom: 2px;
+}
+.search-form {
+position: absolute;
+top: -22px;
+right: 45px;
+}
+@media (min-width: 990px) and (max-width:1024px) {
+
+  .bottom-header a img{
+    top: 140px !important;
+  }
+  .infotext, .infotext2 {
+    margin-top: 30px !important;
+  }
+  .order-call{
+    top: 38px;
+    left: 135px;
+    z-index: 999999999999999;
+  }
+  .search-form {
+    top: 0px;
+    right: 67px;
+    z-index: 999999999999999;
+  }
+  .zel-knop {
+    font-size: 15px;
+  }
+  #menu-middle-menu {
+    top: 246px !important;
+  }
+}
+@media (min-width:  768px) and (max-width:989px) {
+
+  .bottom-header a img{
+    top: 23px !important;
+    z-index: 999999999999999;
+  }
+  .infotext, .infotext2 {
+    margin-top: 65px !important;
+  }
+  .order-call{
+    top: 55px;
+    left: 350px;
+    z-index: 999999999999999;
+  }
+  .search-form {
+    top: 22px;
+    right: 67px;
+    z-index: 999999999999999;
+  }
+  #searchform {
+    margin-right: 15px;
+  }
+  .zel-knop {
+    font-size: 13px;
+  }
+  .myinto {
+    margin-right: -25px;
+  }
+ .infotext2 {
+    margin-left: 190px !important;
+  }
+  #menu-middle-menu {
+    top: 246px !important;
+  }
+}
+@media (min-width:  480px) and (max-width:767px) {
+  .bottom-header a img{
+    top: 15px !important;
+  }
+
+  .order-call{
+    top: 105px;
+    left: 45px;
+  }
+  .search-form {
+    top: 87px;
+    left: 250px;
+  }
+
+  .infotext {
+    top: 95px;
+    left: 460px;
+  }
+  .infotext2 {
+    left: 69%;
+    top: 125px;
+  }
+.main_menu {
+    top: -144px !important;
+    left: 105px !important;
+  }
+
+  .myinto {
+    left: 736px;
+  }
+}
+@media (max-width:  479px){
+
+  .bottom-header a img{ 
+    top: 15px !important;
+    width: 245px !important;
+  }
+  .infotext {
+     top: 90px;
+     left: 622px;   
+  }
+  .infotext2 {
+     top: 120px;
+     left: 668px;  
+  }
+  .myinto {
+     top: 56px;
+     left: 668px;
+  }
+
+  .main_menu {
+    top: -108px !important;
+    left: 98px !important;
+  }
+  .order-call{
+    top: 202px;
+    left: 51px;
+  }
+.search-form {
+    top: 240px;
+    left: 49px;
+}
+.header-phone-big {
+    color: #f1b70d;
+    font-size: 21px;
+    margin: 6px 0 0;
+    text-align: center;
+}
+}
+
+@media (max-width:  989px){
+.print-page {
+    display: none !important;
+}
+}
+

@@ -1,0 +1,263 @@
+<html>
+
+<head>
+	<title>Калькулятор для металлопроката. Рассчитать вес металла онлайн.</title>
+	<meta name="description" content="Калькулятор для расчета металлопроката." />
+	<meta name="keywords" content="калькулятор металлопрокат металл" />
+	<meta name="robots" content="index,all" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="styles/main.css" rel="stylesheet" type="text/css">
+	<link href="styles/colorbox.css" rel="stylesheet" type="text/css" />
+	<link href="styles/contact.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="javascript/functions.js"></script>
+	<script type="text/javascript" src="javascript/jquery.js"></script>
+	<script type="text/javascript" src="javascript/jquery.colorbox.js"></script> 
+	<script type="text/javascript" src="javascript/modalbox.js"></script>
+	<script type="text/javascript" src="javascript/jquery.simplemodal.js"></script>
+	<script type="text/javascript" src="javascript/contact.js"></script>
+</head>
+<body>
+
+<table width="800" border="0" cellpadding="0" cellspacing="2">
+				<tbody><tr>
+					<td class="tcalc">
+						<table width="100%" border="0" cellpadding="0" cellspacing="2">
+							<tbody>
+							<tr>
+								<td id="cat1" class="answervopros2" onclick="comta(this);" onmouseover="vomta(this);" onmouseout="tomta(this);">Калькулятор стального металлопроката</td>
+								<td id="cat2" class="answervopros1" onclick="comta(this);" onmouseover="vomta(this);" onmouseout="tomta(this);"></td>
+								<td id="cat3" class="answervopros1" onclick="comta(this);" onmouseover="vomta(this);" onmouseout="tomta(this);"></td>
+								<td id="cat4" class="answervopros1" onclick="comta(this);" onmouseover="vomta(this);" onmouseout="tomta(this);"></td>
+								<td id="cat5" class="answervopros1" onclick="comta(this);" onmouseover="vomta(this);" onmouseout="tomta(this);"></td>
+							</tr>
+						</tbody></table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tbody><tr>
+								<td width="158" valign="top" class="tcalc">
+									<table width="100%" border="0" cellpadding="0" cellspacing="2">
+										<tbody>
+										<tr><td id="nop1" class="nep2" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Труба круглая</td></tr>
+										<tr><td id="nop2" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Труба профильная</td></tr>
+										<tr><td id="nop3" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Лист</td></tr>
+										<tr><td id="nop4" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Плита</td></tr>
+										<tr><td id="nop5" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Лента</td></tr>
+										<tr><td id="nop6" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Шина / Полоса</td></tr>
+										<tr><td id="nop7" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Круг / Пруток</td></tr>
+										<tr><td id="nop8" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Квадрат</td></tr>
+										<tr><td id="nop9" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Шестигранник</td></tr>
+										<tr><td id="nop10" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Уголок</td></tr>
+										<tr><td id="nop11" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Швеллер</td></tr>
+										<tr><td id="nop12" class="nep1" onclick="ncomta(this);" onmouseover="nvomta(this);" onmouseout="ntomta(this);">Проволока</td></tr>
+									</tbody></table>
+								</td>
+								<td width="2"><img src="images/design/ch.gif" width="2" border="0"></td>
+								<td class="tcalc">
+									<div id="nip1" class="yescalc">
+										<div class="setrub">
+										<form name="truba_nerzav_k">
+											<input id="truba_nerzav_k_vd" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_k_ts" type="text" maxlength="8" value="0" class="vvin2" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_k_dl" type="text" maxlength="8" value="0" class="vvin3" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_k_vs" type="text" maxlength="8" value="0" class="vvin4" tabindex="4" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip2" class="nocalc">
+										<div class="sebox">
+										<form name="truba_nerzav_p">
+											<input id="truba_nerzav_p_vy" type="text" maxlength="8" value="0" class="vvin11" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_p_sh" type="text" maxlength="8" value="0" class="vvin12" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_p_ts" type="text" maxlength="8" value="0" class="vvin13" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_p_dl" type="text" maxlength="8" value="0" class="vvin14" tabindex="4" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="truba_nerzav_p_vs" type="text" maxlength="8" value="0" class="vvin15" tabindex="5" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip3" class="nocalc">
+										<div class="selist">
+										<form name="list_nerzav">
+											<input id="list_nerzav_sh" type="text" maxlength="8" value="0" class="vvin11" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="list_nerzav_dl" type="text" maxlength="8" value="0" class="vvin22" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="list_nerzav_ts" type="text" maxlength="8" value="0" class="vvin13" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="list_nerzav_kl" type="text" maxlength="8" value="0" class="vvin14" tabindex="4" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="list_nerzav_op" type="text" maxlength="8" value="0" class="vvin23" tabindex="5" readonly=""><br>
+											<input id="list_nerzav_vs" type="text" maxlength="8" value="0" class="vvin24" tabindex="6" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip4" class="nocalc">
+										<div class="seplita">
+										<form name="plita_nerzav">
+											<input id="plita_nerzav_sh" type="text" maxlength="8" value="0" class="vvin11" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="plita_nerzav_dl" type="text" maxlength="8" value="0" class="vvin22" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="plita_nerzav_ts" type="text" maxlength="8" value="0" class="vvin13" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="plita_nerzav_kl" type="text" maxlength="8" value="0" class="vvin14" tabindex="4" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="plita_nerzav_op" type="text" maxlength="8" value="0" class="vvin23" tabindex="5" readonly=""><br>
+											<input id="plita_nerzav_vs" type="text" maxlength="8" value="0" class="vvin24" tabindex="6" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip5" class="nocalc">
+										<div class="selenta">
+										<form name="lenta_nerzav">
+											<input id="lenta_nerzav_sh" type="text" maxlength="8" value="0" class="vvin11" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="lenta_nerzav_dl" type="text" maxlength="8" value="0" class="vvin32" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="lenta_nerzav_ts" type="text" maxlength="8" value="0" class="vvin33" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="lenta_nerzav_op" type="text" maxlength="8" value="0" class="vvin34" tabindex="4" readonly=""><br>
+											<input id="lenta_nerzav_vs" type="text" maxlength="8" value="0" class="vvin35" tabindex="5" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip6" class="nocalc">
+										<div class="seshina">
+										<form name="polosa_nerzav">
+											<input id="polosa_nerzav_sh" type="text" maxlength="8" value="0" class="vvin11" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="polosa_nerzav_dl" type="text" maxlength="8" value="0" class="vvin22" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="polosa_nerzav_ts" type="text" maxlength="8" value="0" class="vvin13" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="polosa_nerzav_vs" type="text" maxlength="8" value="0" class="vvin4" tabindex="4" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip7" class="nocalc">
+										<div class="sekrug">
+										<form name="krug_nerzav">
+											<input id="krug_nerzav_vd" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="krug_nerzav_dl" type="text" maxlength="8" value="0" class="vvin2" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="krug_nerzav_vs" type="text" maxlength="8" value="0" class="vvin41" tabindex="3" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip8" class="nocalc">
+										<div class="sekvadrat">
+										<form name="kvadrat_nerzav">
+											<input id="kvadrat_nerzav_sh" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="kvadrat_nerzav_dl" type="text" maxlength="8" value="0" class="vvin2" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="kvadrat_nerzav_vs" type="text" maxlength="8" value="0" class="vvin41" tabindex="3" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip9" class="nocalc">
+										<div class="sehest">
+										<form name="shest_nerzav">
+											<input id="shest_nerzav_vd" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shest_nerzav_dl" type="text" maxlength="8" value="0" class="vvin42" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shest_nerzav_vs" type="text" maxlength="8" value="0" class="vvin41" tabindex="3" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip10" class="nocalc">
+										<div class="seugol">
+										<form name="ugol_nerzav">
+											<input id="ugol_nerzav_vy" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="ugol_nerzav_sh" type="text" maxlength="8" value="0" class="vvin2" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="ugol_nerzav_ts" type="text" maxlength="8" value="0" class="vvin44" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="ugol_nerzav_dl" type="text" maxlength="8" value="0" class="vvin45" tabindex="4" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="ugol_nerzav_vs" type="text" maxlength="8" value="0" class="vvin15" tabindex="5" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip11" class="nocalc">
+										<div class="sehvel">
+										<form name="shvel_nerzav">
+											<input id="shvel_nerzav_vy" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shvel_nerzav_sh" type="text" maxlength="8" value="0" class="vvin42" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shvel_nerzav_ts" type="text" maxlength="8" value="0" class="vvin51" tabindex="3" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shvel_nerzav_dl" type="text" maxlength="8" value="0" class="vvin45" tabindex="4" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="shvel_nerzav_vs" type="text" maxlength="8" value="0" class="vvin15" tabindex="5" readonly="">
+										</form>
+										</div>
+									</div>
+									<div id="nip12" class="nocalc">
+										<div class="seprov">
+										<form name="prov_nerzav">
+											<input id="prov_nerzav_vd" type="text" maxlength="8" value="0" class="vvin1" tabindex="1" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="prov_nerzav_dl" type="text" maxlength="8" value="0" class="vvin2" tabindex="2" onkeypress="toknum(this, event);" onkeyup="calcm();"><br> 
+											<input id="prov_nerzav_vs" type="text" maxlength="8" value="0" class="vvin41" tabindex="3" readonly="">
+										</form>
+										</div>
+									</div>
+								</td>
+								<td width="2"><img src="images/design/ch.gif" width="2"></td>
+								<td width="158" valign="top" class="tcalc">
+									<div id="met1" class="yescalc">
+										<table width="100%" border="0" cellpadding="0" cellspacing="2">
+											<tbody style="display:none !important;"><tr><td class="zagStlb">Марки сталей</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl1" value="7900" checked="" onclick="calcm();"> AISI 304</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl2" value="8000" onclick="calcm();"> AISI 316</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl3" value="7950" onclick="calcm();"> AISI 321</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl4" value="7700" onclick="calcm();"> AISI 430</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl5" value="7950" onclick="calcm();"> 06ХН28МДТ</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl6" value="7700" onclick="calcm();"> 08Х17Т</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl7" value="7900" onclick="calcm();"> 08Х18Н10</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl8" value="7900" onclick="calcm();"> 08Х18Н10Т</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl9" value="8000" onclick="calcm();"> 10Х17Н13М2Т</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl10" value="7950" onclick="calcm();"> 10Х23Н18</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl11" value="7700" onclick="calcm();"> 12Х13</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl12" value="7700" onclick="calcm();"> 12Х17</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl13" value="7950" onclick="calcm();"> 12Х18Н10Т</td></tr>
+											<tr><td height="20"><input type="radio" name="msteel" id="ptl14" value="7600" onclick="calcm();"> 15Х25Т</td></tr>
+										</tbody></table>
+									</div>
+									<div id="met2" class="nocalc">
+										<table width="100%" border="0" cellpadding="0" cellspacing="2">
+											<tbody><tr><td class="zagStlb">Марки сплавов</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl1" value="2710" checked="" onclick="calcm();"> А5</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl2" value="2700" onclick="calcm();"> АД</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl3" value="2700" onclick="calcm();"> АД1</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl4" value="2770" onclick="calcm();"> АК4</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl5" value="2750" onclick="calcm();"> АК6</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl6" value="2660" onclick="calcm();"> АМг</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl7" value="2720" onclick="calcm();"> АМц</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl8" value="2850" onclick="calcm();"> В95</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl9" value="2700" onclick="calcm();"> ВД1</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl10" value="2790" onclick="calcm();"> Д1</td></tr>
+											<tr><td height="20"><input type="radio" name="malumn" id="atl11" value="2790" onclick="calcm();"> Д16</td></tr>
+										</tbody></table>
+									</div>
+									<div id="met3" class="nocalc">
+										<table width="100%" border="0" cellpadding="0" cellspacing="2">
+											<tbody><tr><td class="zagStlb">Марки сплавов</td></tr>
+											<tr><td height="20"><input type="radio" name="mcuprum" id="mtl1" value="8940" checked="" onclick="calcm();"> М1</td></tr>
+											<tr><td height="20"><input type="radio" name="mcuprum" id="mtl2" value="8940" onclick="calcm();"> М2</td></tr>
+											<tr><td height="20"><input type="radio" name="mcuprum" id="mtl3" value="8940" onclick="calcm();"> М3</td></tr>
+										</tbody></table>
+									</div>
+									<div id="met4" class="nocalc">
+										<table width="100%" border="0" cellpadding="0" cellspacing="2">
+											<tbody><tr><td class="zagStlb">Марки сплавов</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl1" value="8470" checked="" onclick="calcm();"> Л63</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl2" value="8470" onclick="calcm();"> Л68</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl3" value="8500" onclick="calcm();"> ЛЖМц59-1-1</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl4" value="8500" onclick="calcm();"> ЛМц58-2</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl5" value="8450" onclick="calcm();"> ЛС58-2</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl6" value="8450" onclick="calcm();"> ЛС59-1</td></tr>
+											<tr><td height="20"><input type="radio" name="mlatun" id="ltl7" value="8500" onclick="calcm();"> ЛС63-3</td></tr>
+										</tbody></table>
+									</div>
+									<div id="met5" class="nocalc">
+										<table width="100%" border="0" cellpadding="0" cellspacing="2">
+											<tbody><tr><td class="zagStlb">Марки сплавов</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl1" value="7500" checked="" onclick="calcm();"> БрАЖ9-4</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl2" value="7500" onclick="calcm();"> БрАЖМц10-3-1,5</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl3" value="7700" onclick="calcm();"> БрАЖН10-4-4</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl4" value="7800" onclick="calcm();"> БрАЖНМц</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl5" value="7500" onclick="calcm();"> БрАМц9-2</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl6" value="8200" onclick="calcm();"> БрБ2</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl7" value="8470" onclick="calcm();"> БрКМЦ3-1</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl8" value="8800" onclick="calcm();"> БрОФ4-0,25</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl9" value="8800" onclick="calcm();"> БрОФ7-0,2</td></tr>
+											<tr><td height="20"><input type="radio" name="mbronza" id="btl10" value="8800" onclick="calcm();"> БрОЦС5-5-5</td></tr>
+										</tbody></table>
+									</div>
+								</td>
+							</tr>
+						</tbody></table>																	</td>
+				</tr>
+			</tbody></table>
+			
+			</body></html>

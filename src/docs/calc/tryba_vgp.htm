@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Калькулятор</title>
+
+<link rel="shortcut icon" href="http://23met.ru/favicon.ico" type="image/x-icon">
+
+<style type="text/css">
+/* main*/
+body{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size:72%;  width:372px; }
+a, a:visited{ color:#0063DC;}
+body,a,div,ul,li,span,h1{margin:0; padding:0;}
+
+/* calc*/
+#calc_w,#calc_l{background:#FFFFFF; border:1px solid #aaa; width:170px; vertical-align:middle; padding:3px; height:14px; margin-top:5px; }
+.calc_s{background:#FFFFFF; border:1px solid #aaa;  width:101px; vertical-align:middle;padding:1px; height:22px;  line-height:16px;/*lineheight-safari hack*/margin-top:9px; }
+#calc_l{float: right;}
+
+.calc_grey{color:#aaa;}
+#calc_container{ height:87px; border:1px solid #aaa;  background-color:#fff;}
+
+#glass{position:absolute; left:0; top:0; z-index:10; width:372px; height:300px; background-color:#fff; opacity:0.7; filter: alpha(opacity=70); display:none;}
+#loading{position:absolute; left:1px; top:68px;  z-index:100; background-color:#E5817B; font-weight:bold; color:#fff; padding:3px 5px;  display:none;}
+/* end calc*/
+</style>
+
+</head>
+<body>
+
+<div id="glass"></div>
+<div id="loading">Загрузка...</div>
+
+<div id="calc_container">
+	
+	<div style="font-size:100%; font-weight:bold; padding:4px; margin:0 5px;  border-bottom:1px solid #aaa; text-align:center;">	
+    	Калькулятор металлопроката
+    </div>
+<div style="padding:0 5px;">
+	<select id="23met_n" class="calc_s" style="width:150px;" onchange="refresh(1)"><option value="balka">Балка</option><option value="kvadrat">Квадрат</option><option value="kryg">Круг</option><option value="list_gk">Лист г/к</option><option value="polosa">Полоса</option><option value="tryba_vgp" selected="selected">Труба ВГП</option><option value="tryba_gd">Труба г/д</option><option value="tryba_es_pr">Труба э/с прямоуг.</option><option value="ygolok">Уголок</option><option value="shveller">Швеллер</option><option value="shestigrannik">Шестигранник</option></select>
+    
+    <select id="23met_s" class="calc_s" onchange="refresh(0)"><option value="1.16" selected="selected">15х2.5</option><option value="1.28">15х2.8</option><option value="1.5">20х2.5</option><option value="1.66">20х2.8</option><option value="">20х3</option><option value="1.86">20х3.2</option><option value="">25х2.5</option><option value="2.12">25х2.8</option><option value="">25х3</option><option value="2.39">25х3.2</option><option value="2.73">32х2.8</option><option value="">32х3</option><option value="3.09">32х3.2</option><option value="3.33">40х3</option><option value="">40х3.2</option><option value="3.84">40х3.5</option><option value="4.22">50х3</option><option value="4.88">50х3.5</option><option value="7.05">65х4</option><option value="8.34">80х4</option><option value="9.32">80х4.5</option><option value="12.15">100х4.5</option></select>
+    
+        
+        
+        
+        
+    <!--<br />-->
+    		<input id="calc_w" class="calc_grey" onkeyup="calc(1)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="тонны">
+    <input id="calc_l" class="calc_grey" onkeyup="calc(0)" onfocus="calc_grey(this.id,0)" onblur="calc_grey(this.id,0)" value="метры">
+    </div>    
+    <div style="margin-top:9px; height:19px; line-height:19px; padding:0 5px;  background-color:#f7f7f7; border-top:1px solid #E0E0E0;">
+    <img src="truba.jpg" />
+    </div>
+</div>	
+
+   
+ 
+<script type="text/javascript">
+
+
+  var calc_koef=1.16;
+  var calc_stal_koef=1;
+  var calc_text={
+		  calc_w:'тонны',
+		  calc_l:'метры'
+	  };
+  
+  var el_calc_w=$('calc_w');
+  var el_calc_l=$('calc_l');
+  var calc_last_w_to_l;
+  
+  function calc_set_stal_koef(e){
+	   calc_stal_koef=e.value;
+	   if(calc_last_w_to_l) calc(1);
+	   if(calc_last_w_to_l===0) calc(0);
+	   e.blur();
+  }
+  
+  
+  function calc_grey(id,prinydit){
+	   var e=$(id)
+	   if(e.value==calc_text[id] && !prinydit){ e.value='';  e.className=e.className.replace('calc_grey','');}
+	   else{
+		  if(!e.value || prinydit){ e.value=calc_text[id];  e.className=e.className+' calc_grey';}
+	   }
+  }
+
+  function calc(w_to_l){
+	  var w,l;
+	  if(w_to_l==1){
+		  w=$('calc_w').value;
+		  l=w.replace(',', '.')/(calc_koef*calc_stal_koef)*1000;
+		  if(l){l=Math.round(l*1000)/1000; el_calc_l.value=l; el_calc_l.className=el_calc_l.className.replace('calc_grey',''); }
+		  else calc_grey('calc_l',1);
+		  calc_last_w_to_l=1;
+	  }
+	  else{
+		  l=$('calc_l').value;
+		  w=l.replace(',', '.')*(calc_koef*calc_stal_koef)/1000;
+		  if(w){w=Math.round(w*1000)/1000; el_calc_w.value=w;  el_calc_w.className=el_calc_w.className.replace('calc_grey','');}
+		  else calc_grey('calc_w',1);
+		  calc_last_w_to_l=0;
+	  }
+  }
+  
+  function $(id){
+	  return document.getElementById(id);
+  }
+  
+  function refresh(all,set_size){
+	 if(all){
+		 $('glass').style.display='block';
+		 //var t=setTimeout("$('loading').style.display='block'",500);
+		 if(!set_size) window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm';
+		 else window.location = "http://metallgarant-spb.ru/calc/"+$('23met_n').value+'.htm'+set_size+'/';
+	 }
+	 else{ 
+
+	 	calc_koef=$('23met_s').value;
+		if(calc_koef){
+			if(calc_last_w_to_l) calc(1);
+	    	if(calc_last_w_to_l===0) calc(0);
+		}
+		document.getElementById('23met_s').blur();
+	 }
+  }
+
+</script>
+<!--/calc--> 
+
+</body></html>
